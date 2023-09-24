@@ -1,0 +1,31 @@
+{
+  "id": "frontpage_hero_slice",
+  "type": "SharedSlice",
+  "name": "FrontpageHeroSlice",
+  "description": "FrontpageHeroSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "hero_image": {
+          "type": "Image",
+          "config": {
+            "label": "hero image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": { "label": "text", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
