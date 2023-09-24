@@ -1,12 +1,9 @@
+'use client'
 import { RichTextField } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'
 import Image from 'next/image'
-import { FooterDocument } from '~prismicio-types-d'
 import Typography from '../Typography'
-
-type Props = {
-  data: FooterDocument['data']
-}
+import { FooterDocument } from '../../../prismicio-types'
 
 function ContentBox({
   about,
@@ -63,13 +60,14 @@ function ContactBox({ title, content }: ContactBoxProps) {
   )
 }
 
-export default async function Footer() {
-  const footerResults = await client.getSingle('footer')
-
-  const { about, address_box, contact_box, image } = footerResults.data
-
+export default function Footer({
+  about,
+  address_box,
+  contact_box,
+  image,
+}: FooterDocument['data']) {
   return (
-    <footer className="inset-x-0 h-full min-h-screen overflow-y-scroll lg:fixed bg-lightgray pb-safe">
+    <footer className="inset-x-0 h-full min-h-screen overflow-y-scroll lg:fixed bg-lightgray pb-safe top-0">
       <div className="container grid content-between h-full gap-12 py-12 mx-auto lg:py-24 lg:gap-0">
         <div className="lg:flex">
           <div className="lg:w-2/3">

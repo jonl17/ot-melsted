@@ -1,6 +1,7 @@
 'use client'
 import Typography from '@/components/Typography'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
@@ -48,11 +49,11 @@ export default function Nav() {
           initial={{ filter: 'invert(1)' }}
           animate={{ filter: invert ? 'invert(1)' : 'invert(0)' }}
         >
-          <button onClick={scrollTop}>
+          <Link href="/">
             <Typography element="h1" type="nav">
               OT.Melsted
             </Typography>
-          </button>
+          </Link>
           <button onClick={scrollBottom}>
             <Typography element="h1" type="nav">
               About

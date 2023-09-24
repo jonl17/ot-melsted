@@ -1,9 +1,8 @@
 import ProjectShowcase from '@/components/ProjectShowcase'
-import { client } from '@/prismic/client'
 import { Content } from '@prismicio/client'
 import { SliceComponentProps } from '@prismicio/react'
-import { useEffect, useState } from 'react'
-import { ProjectDocument } from '../../../prismicio-types'
+import { ProjectDocument } from '~prismicio-types-d'
+import { createClient } from '@/prismicio'
 
 /**
  * Props for `ProjectShowcaseSlice`.
@@ -14,21 +13,13 @@ export type ProjectShowcaseSliceProps =
 /**
  * Component for "ProjectShowcaseSlice" Slices.
  */
-const ProjectShowcaseSlice = ({
+export default async function ProjectShowcaseSlice({
   slice,
-}: ProjectShowcaseSliceProps): JSX.Element => {
-  const [projectDocuments, setProjectDocuments] = useState<ProjectDocument[]>(
-    []
+}: ProjectShowcaseSliceProps) {
+  const client = createClient()
+  const projectDocuments = await client.getAllByIDs<ProjectDocument>(
+    slice.items.map((item: any) => item.showcase.id)
   )
-  useEffect(() => {
-    async function fetchProjectDocuments() {
-      return await client.getAllByIDs<ProjectDocument>(
-        // @ts-ignore
-        slice.items.map((item) => item.showcase.id)
-      )
-    }
-    fetchProjectDocuments().then((d) => setProjectDocuments(d))
-  }, [slice.items])
 
   return (
     <section
@@ -39,5 +30,3 @@ const ProjectShowcaseSlice = ({
     </section>
   )
 }
-
-export default ProjectShowcaseSlice

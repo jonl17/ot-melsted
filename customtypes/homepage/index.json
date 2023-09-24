@@ -6,13 +6,24 @@
   "status": true,
   "json": {
     "Main": {
+      "testing": {
+        "type": "Text",
+        "config": {
+          "label": "testing",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "project_showcase_slice": { "type": "SharedSlice" },
-            "frontpage_hero_slice": { "type": "SharedSlice" }
+            "project_showcase_slice": {
+              "type": "SharedSlice"
+            },
+            "frontpage_hero_slice": {
+              "type": "SharedSlice"
+            }
           }
         }
       }
@@ -27,7 +38,10 @@
       },
       "meta_image": {
         "config": {
-          "constraint": { "height": 1260, "width": 2400 },
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
           "label": "Meta Image",
           "thumbnails": []
         },
