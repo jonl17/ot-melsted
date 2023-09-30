@@ -1,6 +1,7 @@
 import { useShowcaseLayoutStore } from '@/stores/showcaseLayout'
 import { ShowcaseLayoutType } from '@/types'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
 const layoutOptions: ShowcaseLayoutType[] = [
   'single-column',
@@ -16,13 +17,16 @@ export default function ShowcaseControls({ layoutChangeCallback }: Props) {
   const { setLayout, layout } = useShowcaseLayoutStore()
 
   return (
-    <div className="sticky z-50 grid justify-center w-full top-16">
-      <nav className="flex gap-5 ">
+    <div className="sticky z-50 grid justify-center w-full top-8">
+      <motion.nav
+        whileTap={{ scale: 0.9 }}
+        className="flex gap-5 h-12 bg-gray/50 rounded-full items-center px-6 shadow"
+      >
         {layoutOptions.map((availableLayout, key) => (
-          <button
-            className={clsx('grid content-center w-3 h-3 shadow', {
-              'bg-black': layout === availableLayout,
-              'bg-gray-300': layout !== availableLayout,
+          <motion.button
+            className={clsx('grid content-center w-3 h-3 shadow rounded-full', {
+              'bg-white': layout === availableLayout,
+              'bg-darkgray/50': layout !== availableLayout,
             })}
             onClick={() => {
               setLayout(availableLayout)
@@ -31,7 +35,7 @@ export default function ShowcaseControls({ layoutChangeCallback }: Props) {
             key={key}
           />
         ))}
-      </nav>
+      </motion.nav>
     </div>
   )
 }

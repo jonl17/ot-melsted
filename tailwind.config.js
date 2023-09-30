@@ -2,11 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     fontFamily: {
       untitled: ['var(--font-untitled)'],
@@ -18,7 +14,9 @@ module.exports = {
       nav: ['26px', '23.4px'],
     },
     colors: {
+      gray: '#E6E6E6',
       lightgray: '#F2F3F3',
+      darkgray: '#BDBDBD',
       white: '#FFFFFF',
       black: '#000000',
     },
