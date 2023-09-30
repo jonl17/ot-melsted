@@ -1,5 +1,5 @@
 {
-  "repositoryName": "ot-melsted",
+  "repositoryName": "otmelsted",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"]
 }

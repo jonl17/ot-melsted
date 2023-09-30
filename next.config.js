@@ -3,13 +3,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.prismic.io",
-        port: "",
-        pathname: "/ot-melsted/**",
+        protocol: 'https',
+        hostname: 'images.prismic.io',
+        port: '',
+        pathname: '/otmelsted/**',
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
