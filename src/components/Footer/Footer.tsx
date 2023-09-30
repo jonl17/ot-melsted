@@ -26,7 +26,7 @@ function ContentBox({
           }}
         />
       </div>
-      <div className="flex items-start justify-end mb-12 lg:w-1/3 lg:mb-0">
+      <div className="flex items-start justify-end py-12 lg:w-1/3 lg:mb-0">
         <Image
           height={image.dimensions?.height}
           width={image.dimensions?.width}

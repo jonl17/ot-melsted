@@ -34,6 +34,9 @@
           "choices": {
             "project_banner": {
               "type": "SharedSlice"
+            },
+            "description_slice": {
+              "type": "SharedSlice"
             }
           }
         }
