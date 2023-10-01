@@ -35,11 +35,6 @@ export default async function ProjectPage({
     throw new Error('uid not valid')
   }
 
-  const { previousUid, nextUid } = resolveDocumentPagination(
-    projectDocument.uid,
-    paginationUids
-  )
-
   return (
     <main>
       <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
@@ -49,8 +44,8 @@ export default async function ProjectPage({
           components={components}
         />
         <ProjectNavigation
-          previous={`/project/${previousUid}`}
-          next={`/project/${nextUid}`}
+          currentUid={projectDocument.uid}
+          uids={paginationUids}
         />
       </div>
       <Footer {...footerDocument.data} />
