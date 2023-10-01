@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer/Footer'
 import Nav from '@/components/Nav/Nav'
+import ProjectNavigation from '@/components/ProjectNavigation/ProjectNavigation'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
@@ -28,6 +29,7 @@ export default async function ProjectPage({
           slices={projectDocument.data.slices}
           components={components}
         />
+        <ProjectNavigation />
       </div>
       <Footer {...footerDocument.data} />
     </main>
