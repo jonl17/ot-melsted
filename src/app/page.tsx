@@ -4,6 +4,8 @@ import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
 
+export const revalidate = 60
+
 export default async function Home() {
   const client = createClient()
 
