@@ -14,7 +14,7 @@ export default function ListAndImages({ projectDocuments }: Props) {
 
   return (
     <div className="flex w-full">
-      <div className="inline-grid content-start w-1/2">
+      <div className="inline-grid content-start w-full md:w-1/2">
         {projectDocuments.map((item, index) => (
           <Link href={`/project/${item.uid}`} key={index}>
             <motion.button
@@ -36,7 +36,7 @@ export default function ListAndImages({ projectDocuments }: Props) {
         ))}
       </div>
       {/* images here */}
-      <div className="relative w-full h-[400px]">
+      <div className="relative w-full h-[400px] hidden md:block">
         {projectDocuments.map((item, index) => (
           <AnimatePresence key={index}>
             {activeIndex === index && (

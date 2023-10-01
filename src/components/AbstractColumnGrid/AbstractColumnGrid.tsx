@@ -16,7 +16,11 @@ export default function AbstractColumnGrid({ projectDocuments }: Props) {
         const randomY = Math.floor(Math.random() * 61) - 30
 
         return (
-          <Link href={`/project/${item.uid}`} key={key}>
+          <Link
+            className="w-1/3 md:w-auto"
+            href={`/project/${item.uid}`}
+            key={key}
+          >
             <motion.span
               initial={{ opacity: 0, scale: 0.98, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: randomY, x: randomX }}

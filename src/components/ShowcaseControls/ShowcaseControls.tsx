@@ -17,7 +17,7 @@ export default function ShowcaseControls({ layoutChangeCallback }: Props) {
   const { setLayout, layout } = useShowcaseLayoutStore()
 
   return (
-    <div className="sticky z-50 grid justify-center w-full top-8">
+    <div className="sticky z-50 grid justify-center w-full top-[90vh] md:top-8">
       <motion.nav
         whileTap={{ scale: 0.9 }}
         className="flex gap-5 h-12 bg-gray/50 rounded-full items-center px-6 shadow"
