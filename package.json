@@ -11,6 +11,7 @@
     "cmp": "npx hygen cmp new"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^4.36.1",
     "@prismicio/client": "^7.2.0",
     "@prismicio/next": "^1.3.5",
     "@prismicio/react": "^2.7.3",
