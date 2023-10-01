@@ -1,3 +1,4 @@
+'use client'
 import Typography from '@/components/Typography'
 import Link from 'next/link'
 
