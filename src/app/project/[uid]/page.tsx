@@ -31,10 +31,6 @@ export default async function ProjectPage({
     (item) => item.showcase.uid
   ) as string[]
 
-  if (!projectDocument) {
-    throw new Error('uid not valid')
-  }
-
   return (
     <main>
       <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
