@@ -47,7 +47,9 @@ export default function Nav({ replaceAbout }: Props) {
         <motion.div
           ref={ref}
           className="flex items-center justify-between h-full"
-          initial={{ filter: 'invert(1)' }}
+          initial={
+            pathname === '/' ? { filter: 'invert(1)' } : { filter: 'invert(0)' }
+          }
           animate={{ filter: invert ? 'invert(1)' : 'invert(0)' }}
         >
           <Link className="hover:opacity-60" href="/">

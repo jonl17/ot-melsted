@@ -34,10 +34,10 @@ export default async function ProjectPage({
   ) as string[]
 
   return (
-    <AnimatedPageWrap>
-      <main>
-        <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
-          <Nav replaceAbout={projectDocument.data.title as string} />
+    <main>
+      <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
+        <Nav replaceAbout={projectDocument.data.title as string} />
+        <AnimatedPageWrap>
           <SliceZone
             slices={projectDocument.data.slices}
             components={components}
@@ -46,9 +46,9 @@ export default async function ProjectPage({
             currentUid={projectDocument.uid}
             uids={paginationUids}
           />
-        </div>
-        <Footer {...footerDocument.data} />
-      </main>
-    </AnimatedPageWrap>
+        </AnimatedPageWrap>
+      </div>
+      <Footer {...footerDocument.data} />
+    </main>
   )
 }
