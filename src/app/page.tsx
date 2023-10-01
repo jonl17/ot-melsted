@@ -3,6 +3,7 @@ import Nav from '@/components/Nav/Nav'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
+import { usePathname } from 'next/navigation'
 
 export const revalidate = 60
 

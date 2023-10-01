@@ -5,7 +5,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
-export default function Nav() {
+type Props = {
+  replaceAbout?: string
+}
+
+export default function Nav({ replaceAbout }: Props) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [invert, setInvert] = useState(true)
 
@@ -33,9 +37,6 @@ export default function Nav() {
     } else setInvert(false)
   }, [pathname])
 
-  function scrollTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
   function scrollBottom() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
   }
@@ -54,11 +55,17 @@ export default function Nav() {
               OT.Melsted
             </Typography>
           </Link>
-          <button className="hover:opacity-60" onClick={scrollBottom}>
+          {replaceAbout ? (
             <Typography element="h1" type="nav">
-              About
+              {replaceAbout}
             </Typography>
-          </button>
+          ) : (
+            <motion.button className="hover:opacity-60" onClick={scrollBottom}>
+              <Typography element="h1" type="nav">
+                About
+              </Typography>
+            </motion.button>
+          )}
         </motion.div>
       </div>
     </nav>

@@ -1,6 +1,8 @@
+'use client'
 import Typography from '@/components/Typography'
 import { resolveDocumentPagination } from '@/utils'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 type Props = {
   currentUid: string
@@ -18,9 +20,14 @@ export default function ProjectNavigation({ currentUid, uids }: Props) {
       >
         <Typography type="large">Previous project</Typography>
       </Link>
-      <Link className="underline hover:opacity-60" href={`/project/${nextUid}`}>
-        <Typography type="large">Next project</Typography>
-      </Link>
+      <motion.span layoutId={`project-title-${currentUid}`}>
+        <Link
+          className="underline hover:opacity-60"
+          href={`/project/${nextUid}`}
+        >
+          <Typography type="large">Next project</Typography>
+        </Link>
+      </motion.span>
     </nav>
   )
 }
