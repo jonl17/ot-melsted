@@ -49,12 +49,12 @@ export default function Nav() {
           initial={{ filter: 'invert(1)' }}
           animate={{ filter: invert ? 'invert(1)' : 'invert(0)' }}
         >
-          <Link href="/">
+          <Link className="hover:opacity-60" href="/">
             <Typography element="h1" type="nav">
               OT.Melsted
             </Typography>
           </Link>
-          <button onClick={scrollBottom}>
+          <button className="hover:opacity-60" onClick={scrollBottom}>
             <Typography element="h1" type="nav">
               About
             </Typography>

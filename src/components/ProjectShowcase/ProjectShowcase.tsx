@@ -5,8 +5,9 @@ import ShowcaseControls from '@/components/ShowcaseControls'
 import SingleColumnGrid from '@/components/SingleColumnGrid'
 import { useShowcaseLayoutStore } from '@/stores/showcaseLayout'
 import { AnimatePresence } from 'framer-motion'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ProjectDocument } from '../../../prismicio-types'
+import { useProjectPagination } from '@/stores/projectPagination'
 
 type Props = {
   projectDocuments: ProjectDocument[]

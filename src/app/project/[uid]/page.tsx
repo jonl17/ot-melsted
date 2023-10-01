@@ -3,7 +3,9 @@ import Nav from '@/components/Nav/Nav'
 import ProjectNavigation from '@/components/ProjectNavigation/ProjectNavigation'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
+import { resolveDocumentPagination } from '@/utils'
 import { SliceZone } from '@prismicio/react'
+import { ProjectDocument } from '~prismicio-types-d'
 
 export const revalidate = 60
 
@@ -17,9 +19,26 @@ export default async function ProjectPage({
   const projectDocument = await client.getByUID('project', params.uid)
   const footerDocument = await client.getSingle('footer')
 
+  const homepageDocument = await client.getSingle('homepage')
+
+  // the project pagination order is in the same order
+  // as the documents in ProjectShowCaseSlice on the homepage.
+  const homepageProjectSliceDoc = homepageDocument.data.slices.find(
+    (slice) => slice.slice_type === 'project_showcase_slice'
+  )
+  const paginationUids = homepageProjectSliceDoc?.items.map(
+    // @ts-ignore
+    (item) => item.showcase.uid
+  ) as string[]
+
   if (!projectDocument) {
     throw new Error('uid not valid')
   }
+
+  const { previousUid, nextUid } = resolveDocumentPagination(
+    projectDocument.uid,
+    paginationUids
+  )
 
   return (
     <main>
@@ -29,7 +48,10 @@ export default async function ProjectPage({
           slices={projectDocument.data.slices}
           components={components}
         />
-        <ProjectNavigation />
+        <ProjectNavigation
+          previous={`/project/${previousUid}`}
+          next={`/project/${nextUid}`}
+        />
       </div>
       <Footer {...footerDocument.data} />
     </main>
