@@ -14,8 +14,6 @@ export default async function ProjectPage({
   const projectDocument = await client.getByUID('project', params.uid)
   const footerDocument = await client.getSingle('footer')
 
-  console.log(params)
-
   if (!projectDocument) {
     throw new Error('uid not valid')
   }

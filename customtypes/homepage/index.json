@@ -6,13 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "testing": {
-        "type": "Text",
-        "config": {
-          "label": "testing",
-          "placeholder": ""
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

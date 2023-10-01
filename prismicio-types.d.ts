@@ -78,17 +78,6 @@ type HomepageDocumentDataSlicesSlice =
  */
 interface HomepageDocumentData {
   /**
-   * testing field in *homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.testing
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  testing: prismic.KeyTextField
-
-  /**
    * Slice Zone field in *homepage*
    *
    * - **Field Type**: Slice Zone
@@ -148,7 +137,10 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >
 
-type ProjectDocumentDataSlicesSlice = ProjectBannerSlice | DescriptionSliceSlice
+type ProjectDocumentDataSlicesSlice =
+  | ProjectBannerSlice
+  | DescriptionSliceSlice
+  | ProjectImageSectionSlice
 
 /**
  * Content for project documents
@@ -351,6 +343,71 @@ export type ProjectBannerSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *ProjectImageSectionSlice → Primary*
+ */
+export interface ProjectImageSectionSliceDefaultPrimary {
+  /**
+   * help field in *ProjectImageSectionSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Accepts 1 or 2 images. If 2 are added, make sure they have same dimensions!!
+   * - **API ID Path**: project_image_section.primary.help
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  help: prismic.KeyTextField
+
+  /**
+   * first image field in *ProjectImageSectionSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_image_section.primary.first_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  first_image: prismic.ImageField<never>
+
+  /**
+   * second image field in *ProjectImageSectionSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_image_section.primary.second_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  second_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for ProjectImageSectionSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectImageSectionSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ProjectImageSectionSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *ProjectImageSectionSlice*
+ */
+type ProjectImageSectionSliceVariation = ProjectImageSectionSliceDefault
+
+/**
+ * ProjectImageSectionSlice Shared Slice
+ *
+ * - **API ID**: `project_image_section`
+ * - **Description**: ProjectImageSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectImageSectionSlice = prismic.SharedSlice<
+  'project_image_section',
+  ProjectImageSectionSliceVariation
+>
+
+/**
  * Primary content in *ProjectShowcaseSlice → Items*
  */
 export interface ProjectShowcaseSliceSliceDefaultItem {
@@ -426,6 +483,10 @@ declare module '@prismicio/client' {
       ProjectBannerSliceDefaultPrimary,
       ProjectBannerSliceVariation,
       ProjectBannerSliceDefault,
+      ProjectImageSectionSlice,
+      ProjectImageSectionSliceDefaultPrimary,
+      ProjectImageSectionSliceVariation,
+      ProjectImageSectionSliceDefault,
       ProjectShowcaseSliceSlice,
       ProjectShowcaseSliceSliceDefaultItem,
       ProjectShowcaseSliceSliceVariation,
