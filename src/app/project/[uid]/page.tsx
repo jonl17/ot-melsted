@@ -37,7 +37,7 @@ export default async function ProjectPage({
     <AnimatedPageWrap>
       <main>
         <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
-          <Nav replaceAbout={projectDocument.data.title} />
+          <Nav replaceAbout={projectDocument.data.title as string} />
           <SliceZone
             slices={projectDocument.data.slices}
             components={components}
