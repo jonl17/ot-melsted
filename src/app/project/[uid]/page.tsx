@@ -4,10 +4,31 @@ import Nav from '@/components/Nav/Nav'
 import ProjectNavigation from '@/components/ProjectNavigation/ProjectNavigation'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
-import { resolveDocumentPagination } from '@/utils'
 import { SliceZone } from '@prismicio/react'
-import { AnimatePresence } from 'framer-motion'
-import { ProjectDocument } from '~prismicio-types-d'
+import { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { uid?: string }
+}): Promise<Metadata> {
+  const client = createClient()
+  const pageSettings = await client.getSingle('page_settings')
+  const projectDoc = await client.getByUID('project', params.uid ?? '')
+  // backup
+  const { page_title, page_description, page_image } = pageSettings.data
+  // overwrite
+  const { seo_title, seo_description, seo_image } = projectDoc.data
+  return {
+    title: seo_title ?? page_title,
+    description: seo_description ?? page_description,
+    openGraph: {
+      title: seo_title ?? page_title ?? '',
+      description: seo_description ?? page_description ?? '',
+      images: [{ url: seo_image.url ?? page_image.url ?? '' }],
+    },
+  }
+}
 
 export const revalidate = 60
 

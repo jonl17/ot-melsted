@@ -44,6 +44,33 @@
           }
         }
       }
+    },
+    "seo": {
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "seo title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "seo description",
+          "placeholder": "Optimal SEO description length is 150-160 characters"
+        }
+      },
+      "seo_image": {
+        "type": "Image",
+        "config": {
+          "label": "seo image",
+          "constraint": {
+            "width": 1200,
+            "height": 630
+          },
+          "thumbnails": []
+        }
+      }
     }
   }
 }
