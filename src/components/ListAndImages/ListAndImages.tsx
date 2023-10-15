@@ -13,7 +13,7 @@ export default function ListAndImages({ projectDocuments }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | undefined>()
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full container">
       <div className="inline-grid content-start w-full md:w-1/2">
         {projectDocuments.map((item, index) => (
           <Link href={`/project/${item.uid}`} key={index}>
