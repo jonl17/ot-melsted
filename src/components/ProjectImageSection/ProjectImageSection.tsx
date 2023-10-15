@@ -19,11 +19,11 @@ export default function ProjectImageSection({
     <div className="container max-w-4xl">
       <div
         className={clsx('relative h-full w-full', {
-          'grid grid-cols-2 gap-10': hasSecondImage,
+          'grid grid-cols-2 gap-5 md:gap-10': hasSecondImage,
         })}
       >
         <Image
-          className="object-cover h-full py-12 lg:py-24"
+          className="object-cover h-full py-6 md:py-24"
           height={firstImage.dimensions?.height}
           width={firstImage.dimensions?.width}
           src={firstImage.url ?? ''}
@@ -31,7 +31,7 @@ export default function ProjectImageSection({
         />
         {hasSecondImage ? (
           <Image
-            className="object-cover h-full py-12 lg:py-24"
+            className="object-cover h-full py-6 md:py-24"
             height={secondImage.dimensions?.height}
             width={secondImage.dimensions?.width}
             src={secondImage.url ?? ''}

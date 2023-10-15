@@ -5,10 +5,10 @@ export default function ProjectBanner({
   image,
 }: ProjectBannerSliceDefaultPrimary) {
   return (
-    <div className="container grid max-w-4xl min-h-screen">
-      <div className="aspect-[12/9] relative h-full w-full">
+    <div className="container grid max-w-4xl pt-12 md:min-h-screen">
+      <div className="md:aspect-[12/9] relative md:h-full w-full h-96">
         <Image
-          className="object-contain w-full h-full py-12 lg:py-24"
+          className="object-contain w-full h-full py-6 md:py-24"
           fill
           src={image.url ?? ''}
           alt={image.alt ?? ''}
