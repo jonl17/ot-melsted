@@ -14,8 +14,12 @@ export default async function Home() {
   let homepage
 
   try {
-    results = await client.getSingle('footer')
-    homepage = await client.getSingle('homepage')
+    results = await client.getSingle('footer', {
+      fetchOptions: { cache: 'no-cache' },
+    })
+    homepage = await client.getSingle('homepage', {
+      fetchOptions: { cache: 'no-cache' },
+    })
   } catch (error) {
     console.error('Error fetching data: ', error)
   }
