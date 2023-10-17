@@ -5,8 +5,6 @@ import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
 import { usePathname } from 'next/navigation'
 
-export const revalidate = 60
-
 export default async function Home() {
   const client = createClient()
 
@@ -14,12 +12,8 @@ export default async function Home() {
   let homepage
 
   try {
-    results = await client.getSingle('footer', {
-      fetchOptions: { cache: 'no-cache' },
-    })
-    homepage = await client.getSingle('homepage', {
-      fetchOptions: { cache: 'no-cache' },
-    })
+    results = await client.getSingle('footer')
+    homepage = await client.getSingle('homepage')
   } catch (error) {
     console.error('Error fetching data: ', error)
   }
@@ -36,3 +30,4 @@ export default async function Home() {
     </main>
   )
 }
+export const revalidate = 60

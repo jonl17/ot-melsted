@@ -30,8 +30,6 @@ export async function generateMetadata({
   }
 }
 
-export const revalidate = 60
-
 export default async function ProjectPage({
   params,
 }: {
@@ -73,3 +71,5 @@ export default async function ProjectPage({
     </main>
   )
 }
+
+export const revalidate = 60
