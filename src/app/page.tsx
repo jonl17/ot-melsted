@@ -4,17 +4,14 @@ import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
 import { revalidatePath } from 'next/cache'
-import { usePathname } from 'next/navigation'
 
 export default async function Home() {
-  const client = createClient()
+  const client = createClient({ fetchOptions: { next: { revalidate: 5 } } })
 
   const [results, homepage] = await Promise.all([
     client.getSingle('footer'),
     client.getSingle('homepage'),
   ])
-
-  revalidatePath('/')
 
   return (
     <main>
@@ -28,4 +25,3 @@ export default async function Home() {
     </main>
   )
 }
-export const revalidate = 5

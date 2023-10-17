@@ -6,7 +6,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient()
+  const client = createClient({ fetchOptions: { next: { revalidate: 5 } } })
   const globalSettings = await client.getSingle('page_settings')
   const { page_title, page_description, page_image } = globalSettings.data
   return {

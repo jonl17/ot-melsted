@@ -36,7 +36,7 @@ export default async function ProjectPage({
 }: {
   params: { uid: string }
 }) {
-  const client = createClient()
+  const client = createClient({ fetchOptions: { next: { revalidate: 5 } } })
 
   const [projectDocument, footerDocument, homepageDocument] = await Promise.all(
     [
@@ -75,5 +75,3 @@ export default async function ProjectPage({
     </main>
   )
 }
-
-export const revalidate = 5
