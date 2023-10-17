@@ -3,6 +3,8 @@ import Nav from '@/components/Nav/Nav'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
+import { revalidatePath } from 'next/cache'
+import { usePathname } from 'next/navigation'
 
 export default async function Home() {
   const client = createClient()
@@ -11,6 +13,8 @@ export default async function Home() {
     client.getSingle('footer'),
     client.getSingle('homepage'),
   ])
+
+  revalidatePath('/')
 
   return (
     <main>
