@@ -3,20 +3,14 @@ import Nav from '@/components/Nav/Nav'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
-import { usePathname } from 'next/navigation'
 
 export default async function Home() {
   const client = createClient()
 
-  let results
-  let homepage
-
-  try {
-    results = await client.getSingle('footer')
-    homepage = await client.getSingle('homepage')
-  } catch (error) {
-    console.error('Error fetching data: ', error)
-  }
+  const [results, homepage] = await Promise.all([
+    client.getSingle('footer'),
+    client.getSingle('homepage'),
+  ])
 
   return (
     <main>
@@ -30,4 +24,4 @@ export default async function Home() {
     </main>
   )
 }
-export const revalidate = 60
+export const revalidate = 5

@@ -15,6 +15,7 @@ export async function generateMetadata({
   const client = createClient()
   const pageSettings = await client.getSingle('page_settings')
   const projectDoc = await client.getByUID('project', params.uid ?? '')
+
   // backup
   const { page_title, page_description, page_image } = pageSettings.data
   // overwrite
@@ -37,10 +38,13 @@ export default async function ProjectPage({
 }) {
   const client = createClient()
 
-  const projectDocument = await client.getByUID('project', params.uid)
-  const footerDocument = await client.getSingle('footer')
-
-  const homepageDocument = await client.getSingle('homepage')
+  const [projectDocument, footerDocument, homepageDocument] = await Promise.all(
+    [
+      client.getByUID('project', params.uid),
+      client.getSingle('footer'),
+      await client.getSingle('homepage'),
+    ]
+  )
 
   // the project pagination order is in the same order
   // as the documents in ProjectShowCaseSlice on the homepage.
@@ -72,4 +76,4 @@ export default async function ProjectPage({
   )
 }
 
-export const revalidate = 60
+export const revalidate = 5
