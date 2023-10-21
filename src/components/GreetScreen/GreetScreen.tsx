@@ -23,7 +23,7 @@ export default function GreetScreen() {
         >
           <Title className="w-full px-4" />
         </motion.div>
-      ) : null}{' '}
+      ) : null}
     </AnimatePresence>
   )
 }

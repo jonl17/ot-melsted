@@ -17,7 +17,6 @@ export default async function Home() {
   return (
     <main>
       <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
-        <Nav />
         {homepage && (
           <SliceZone slices={homepage.data.slices} components={components} />
         )}
