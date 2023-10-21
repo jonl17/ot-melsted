@@ -1,20 +1,22 @@
 import AnimatedPageWrap from '@/components/AnimatedPageWrap/AnimatedPageWrap'
 import Footer from '@/components/Footer/Footer'
-import Nav from '@/components/Nav/Nav'
 import ProjectNavigation from '@/components/ProjectNavigation/ProjectNavigation'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { SliceZone } from '@prismicio/react'
 import { Metadata } from 'next'
+import { revalidateTag } from 'next/cache'
 
 export async function generateMetadata({
   params,
 }: {
   params: { uid?: string }
 }): Promise<Metadata> {
-  const client = createClient()
+  const client = createClient({ fetchOptions: { next: { tags: ['prismic'] } } })
   const pageSettings = await client.getSingle('page_settings')
   const projectDoc = await client.getByUID('project', params.uid ?? '')
+
+  revalidateTag('prismic')
 
   // backup
   const { page_title, page_description, page_image } = pageSettings.data
