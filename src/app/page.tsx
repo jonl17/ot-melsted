@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer/Footer'
+import GreetScreen from '@/components/GreetScreen/GreetScreen'
 import Nav from '@/components/Nav/Nav'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
@@ -22,6 +23,8 @@ export default async function Home() {
         )}
       </div>
       {results && <Footer {...results.data} />}
+
+      <GreetScreen />
     </main>
   )
 }
