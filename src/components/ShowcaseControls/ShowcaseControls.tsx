@@ -4,9 +4,9 @@ import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 const layoutOptions: ShowcaseLayoutType[] = [
-  'single-column',
   'abstract-column',
   'list',
+  'single-column',
 ]
 
 type Props = {

@@ -35,16 +35,16 @@ export default function ProjectShowcase({ projectDocuments }: Props) {
       <ShowcaseControls layoutChangeCallback={() => scrollTop()} />
       <section className="px-12 py-36">
         <AnimatePresence key={layout}>
-          {layout === 'single-column' && (
-            <SingleColumnGrid projectDocuments={projectDocuments} />
-          )}
-
           {layout === 'abstract-column' && (
             <AbstractColumnGrid projectDocuments={projectDocuments} />
           )}
 
           {layout === 'list' && (
             <ListAndImages projectDocuments={projectDocuments} />
+          )}
+
+          {layout === 'single-column' && (
+            <SingleColumnGrid projectDocuments={projectDocuments} />
           )}
         </AnimatePresence>
       </section>

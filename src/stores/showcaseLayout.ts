@@ -7,6 +7,6 @@ type ShowcaseLayoutStore = {
 }
 
 export const useShowcaseLayoutStore = create<ShowcaseLayoutStore>((set) => ({
-  layout: 'single-column',
+  layout: 'abstract-column',
   setLayout: (layout) => set({ layout }),
 }))
