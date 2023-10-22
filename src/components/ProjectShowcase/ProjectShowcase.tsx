@@ -32,7 +32,6 @@ export default function ProjectShowcase({ projectDocuments }: Props) {
       ref={containerRef}
       className="relative w-full min-h-screen pt-12 bg-white"
     >
-      <ShowcaseControls layoutChangeCallback={() => scrollTop()} />
       <section className="px-12 py-36">
         <AnimatePresence key={layout}>
           {layout === 'abstract-column' && (

@@ -1,11 +1,20 @@
 'use client'
+import { useControlsStore } from '@/stores/controls'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 type Props = {
   children: React.ReactNode
+  title: string
 }
 
-export default function AnimatedPageWrap({ children }: Props) {
+export default function AnimatedPageWrap({ children, title }: Props) {
+  const { setTitle } = useControlsStore()
+
+  useEffect(() => {
+    setTitle(title)
+  }, [setTitle, title])
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

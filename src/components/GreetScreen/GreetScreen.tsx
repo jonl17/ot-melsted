@@ -2,9 +2,16 @@
 import Title from '@/icons/Title'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useControlsStore } from '@/stores/controls'
 
 export default function GreetScreen() {
   const [display, setDisplay] = useState(true)
+
+  const { setTitle } = useControlsStore()
+
+  useEffect(() => {
+    setTitle('OT.Melsted')
+  }, [setTitle])
 
   useEffect(() => {
     setTimeout(() => {
