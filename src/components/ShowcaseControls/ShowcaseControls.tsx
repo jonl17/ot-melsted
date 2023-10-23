@@ -6,8 +6,7 @@ import { useShowcaseLayoutStore } from '@/stores/showcaseLayout'
 import { ShowcaseLayoutType } from '@/types'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 const layoutOptions: ShowcaseLayoutType[] = [
@@ -28,6 +27,8 @@ export default function ShowcaseControls() {
 
   const pathname = usePathname()
 
+  const { back } = useRouter()
+
   useEffect(() => {
     function callback() {
       // only applies to the homepage
@@ -46,28 +47,29 @@ export default function ShowcaseControls() {
 
   return (
     <div className="fixed z-40 grid justify-center w-full top-12">
-      <motion.nav className="h-12 bg-gray/20 backdrop-blur-xl rounded-full  px-6 shadow overflow-hidden transition-all">
+      <motion.nav className="h-12 bg-gray/50 backdrop-blur-xl rounded-full px-6 overflow-hidden transition-all">
         <AnimatePresence mode="wait">
           {title ? (
-            <Link href="/">
-              <span className="flex place-items-center gap-3 h-full">
-                <motion.h1
-                  key={title}
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 10, opacity: 0 }}
-                  transition={{
-                    bounce: false,
-                    duration: 0.2,
-                    // ease: 'easeOut',
-                  }}
-                  className="h-full grid items-center text-medium font-bold"
-                >
-                  {title}
-                </motion.h1>
-                {title !== PAGE_TITLE && <Close className="h-3 w-3" />}
-              </span>
-            </Link>
+            <button
+              onClick={() => back()}
+              className="flex place-items-center gap-3 h-full"
+            >
+              <motion.h1
+                key={title}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 10, opacity: 0 }}
+                transition={{
+                  bounce: false,
+                  duration: 0.2,
+                  // ease: 'easeOut',
+                }}
+                className="h-full grid items-center text-medium font-bold text-white"
+              >
+                {title}
+              </motion.h1>
+              {title !== PAGE_TITLE && <Close className="h-5 w-5 text-white" />}
+            </button>
           ) : (
             <motion.span
               key={title}
@@ -88,7 +90,7 @@ export default function ShowcaseControls() {
                   exit={{ y: '100%' }}
                   transition={{ delay: key * 0.05 }}
                   className={clsx(
-                    'grid content-center w-3 h-3 shadow rounded-full',
+                    'grid content-center w-5 h-5 shadow rounded-full',
                     {
                       'bg-white': layout === availableLayout,
                       'bg-darkgray/50': layout !== availableLayout,

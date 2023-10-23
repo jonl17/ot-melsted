@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ShowcaseControls from '@/components/ShowcaseControls/ShowcaseControls'
+import GreetScreen from '@/components/GreetScreen/GreetScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
           <ShowcaseControls />
         </div>
+        <GreetScreen />
       </body>
     </html>
   )

@@ -24,8 +24,6 @@ export default async function Home() {
         )}
       </div>
       {results && <Footer {...results.data} />}
-
-      <GreetScreen />
     </main>
   )
 }

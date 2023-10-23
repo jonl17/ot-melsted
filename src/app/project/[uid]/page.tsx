@@ -60,7 +60,7 @@ export default async function ProjectPage({
 
   return (
     <main>
-      <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
+      <div className="relative z-20 block bg-white pt-12 pb-24">
         <AnimatedPageWrap title={projectDocument.data.title ?? ''}>
           <SliceZone
             slices={projectDocument.data.slices}
@@ -72,7 +72,6 @@ export default async function ProjectPage({
           />
         </AnimatedPageWrap>
       </div>
-      <Footer {...footerDocument.data} />
     </main>
   )
 }
