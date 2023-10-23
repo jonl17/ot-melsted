@@ -1,4 +1,6 @@
 'use client'
+import { PAGE_TITLE } from '@/constants'
+import Close from '@/icons/Close'
 import { useControlsStore } from '@/stores/controls'
 import { useShowcaseLayoutStore } from '@/stores/showcaseLayout'
 import { ShowcaseLayoutType } from '@/types'
@@ -31,7 +33,7 @@ export default function ShowcaseControls() {
       // only applies to the homepage
       if (pathname === '/') {
         if (window.scrollY < window.innerHeight * 0.65) {
-          setTitle('OT.Melsted')
+          setTitle(PAGE_TITLE)
         } else {
           setTitle(undefined)
         }
@@ -48,20 +50,23 @@ export default function ShowcaseControls() {
         <AnimatePresence mode="wait">
           {title ? (
             <Link href="/">
-              <motion.h1
-                key={title}
-                initial={{ y: '100%' }}
-                animate={{ y: '0%' }}
-                exit={{ y: '100%' }}
-                transition={{
-                  bounce: false,
-                  duration: 0.2,
-                  ease: 'anticipate',
-                }}
-                className="h-full grid items-center text-medium font-bold"
-              >
-                {title}
-              </motion.h1>
+              <span className="flex place-items-center gap-3 h-full">
+                <motion.h1
+                  key={title}
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 10, opacity: 0 }}
+                  transition={{
+                    bounce: false,
+                    duration: 0.2,
+                    // ease: 'easeOut',
+                  }}
+                  className="h-full grid items-center text-medium font-bold"
+                >
+                  {title}
+                </motion.h1>
+                {title !== PAGE_TITLE && <Close className="h-3 w-3" />}
+              </span>
             </Link>
           ) : (
             <motion.span
@@ -81,7 +86,7 @@ export default function ShowcaseControls() {
                   initial={{ y: '-100%' }}
                   animate={{ y: '0' }}
                   exit={{ y: '100%' }}
-                  transition={{ delay: key * 0.1 }}
+                  transition={{ delay: key * 0.05 }}
                   className={clsx(
                     'grid content-center w-3 h-3 shadow rounded-full',
                     {

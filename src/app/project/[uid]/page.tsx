@@ -60,7 +60,7 @@ export default async function ProjectPage({
 
   return (
     <main>
-      <div className="relative z-20 block bg-white lg:mb-[100vh] py-24">
+      <div className="relative z-20 block bg-white lg:mb-[100vh] pb-24">
         <AnimatedPageWrap title={projectDocument.data.title ?? ''}>
           <SliceZone
             slices={projectDocument.data.slices}

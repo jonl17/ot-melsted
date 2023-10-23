@@ -3,6 +3,7 @@ import Title from '@/icons/Title'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useControlsStore } from '@/stores/controls'
+import { PAGE_TITLE } from '@/constants'
 
 export default function GreetScreen() {
   const [display, setDisplay] = useState(true)
@@ -10,7 +11,7 @@ export default function GreetScreen() {
   const { setTitle } = useControlsStore()
 
   useEffect(() => {
-    setTitle('OT.Melsted')
+    setTitle(PAGE_TITLE)
   }, [setTitle])
 
   useEffect(() => {
