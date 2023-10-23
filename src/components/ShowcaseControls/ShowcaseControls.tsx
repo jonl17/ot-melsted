@@ -81,7 +81,7 @@ export default function ShowcaseControls() {
                 duration: 0.2,
                 ease: 'anticipate',
               }}
-              className="flex gap-5 items-center h-full"
+              className="flex gap-3 items-center h-full"
             >
               {layoutOptions.map((availableLayout, key) => (
                 <motion.button
