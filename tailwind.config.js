@@ -8,10 +8,10 @@ module.exports = {
       untitled: ['var(--font-untitled)'],
     },
     fontSize: {
-      large: ['40px', '57.2px'],
-      medium: ['20px', '30px'],
+      large: ['36px', '45px'],
+      largeMobile: ['20px', '28px'],
+      medium: ['22px', 'normal'],
       small: ['11px', '18px'],
-      nav: ['26px', '23.4px'],
     },
     colors: {
       gray: '#E6E6E6',
