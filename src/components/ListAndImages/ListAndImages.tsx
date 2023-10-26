@@ -4,6 +4,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useControlsStore } from '@/stores/controls'
 
 type Props = {
   projectDocuments: ProjectDocument[]
@@ -12,26 +13,39 @@ type Props = {
 export default function ListAndImages({ projectDocuments }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | undefined>()
 
+  const setTitle = useControlsStore((state) => state.setTitle)
+
   return (
     <div className="flex w-full container">
-      <div className="inline-grid content-start w-full md:w-1/2">
+      <div className="inline-flex flex-col content-start w-auto md:w-1/2">
         {projectDocuments.map((item, index) => (
-          <Link href={`/project/${item.uid}`} key={index}>
-            <motion.button
+          <Link
+            href={`/project/${item.uid}`}
+            key={index}
+            onMouseEnter={() => {
+              setTitle(item.data.title as string)
+              setActiveIndex(index)
+            }}
+            onMouseLeave={() => {
+              setTitle(undefined)
+
+              setActiveIndex(undefined)
+            }}
+            className="inline-block w-auto"
+            onFocus={() => setActiveIndex(index)}
+            onBlur={() => setActiveIndex(undefined)}
+          >
+            <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ delay: index * 0.05 }}
-              className={clsx('text-left', {
+              className={clsx('text-left w-auto', {
                 underline: activeIndex === index,
               })}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(undefined)}
-              onFocus={() => setActiveIndex(index)}
-              onBlur={() => setActiveIndex(undefined)}
             >
               <p className="text-large font-untitled">{item.data.title}</p>
-            </motion.button>
+            </motion.span>
           </Link>
         ))}
       </div>

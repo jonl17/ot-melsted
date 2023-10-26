@@ -1,3 +1,4 @@
+import { useControlsStore } from '@/stores/controls'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export default function SingleColumnGrid({ projectDocuments }: Props) {
+  const setTitle = useControlsStore((state) => state.setTitle)
+
   return (
     <motion.div
       animate={{ opacity: 1 }}
@@ -15,7 +18,12 @@ export default function SingleColumnGrid({ projectDocuments }: Props) {
       className="grid justify-center gap-56"
     >
       {projectDocuments.map((item, key) => (
-        <Link href={`/project/${item.uid}`} key={key}>
+        <Link
+          href={`/project/${item.uid}`}
+          key={key}
+          onMouseMove={() => setTitle(item.data.title as string)}
+          onMouseLeave={() => setTitle(undefined)}
+        >
           <motion.span
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}

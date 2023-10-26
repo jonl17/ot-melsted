@@ -34,7 +34,7 @@ function Large({ children, element, className }: TypeProps) {
   return (
     <Element
       element={element}
-      className={clsx('font-bold text-medium lg:text-large', className)}
+      className={clsx('font-normal text-medium lg:text-large', className)}
     >
       {children}
     </Element>
@@ -44,7 +44,7 @@ function Large({ children, element, className }: TypeProps) {
 function Nav({ children, element, className }: TypeProps) {
   return (
     <Element
-      className={clsx('font-bold text-medium lg:text-largeMobile', className)}
+      className={clsx('font-normal text-medium lg:text-largeMobile', className)}
       element={element}
     >
       {children}

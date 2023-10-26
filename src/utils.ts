@@ -1,9 +1,13 @@
-export function resolveDocumentPagination(currentUid: string, uids: string[]) {
-  const currentIndex = uids.indexOf(currentUid)
-  const previousUid =
-    currentIndex > 0 ? uids[currentIndex - 1] : uids[uids.length - 1]
-  const nextUid =
-    currentIndex < uids.length - 1 ? uids[currentIndex + 1] : uids[0]
+import { ProjectDocument } from '~prismicio-types-d'
 
-  return { previousUid, nextUid }
+export function resolveDocumentPagination(
+  currentUid: string,
+  documents: ProjectDocument[]
+) {
+  const uids = documents.map((doc) => doc.uid)
+  const currentIndex = uids.indexOf(currentUid)
+  const nextDocument =
+    currentIndex < uids.length - 1 ? documents[currentIndex + 1] : documents[0]
+
+  return { nextDocument }
 }

@@ -47,7 +47,14 @@ export default function ShowcaseControls() {
 
   return (
     <div className="fixed z-40 grid justify-center w-full top-12">
-      <motion.nav className="h-12 bg-gray/50 backdrop-blur-xl rounded-full px-6 overflow-hidden transition-all">
+      <motion.nav
+        className={clsx(
+          'py-1 rounded-full px-2 overflow-hidden transition-all',
+          {
+            'bg-gray/50': title !== undefined,
+          }
+        )}
+      >
         <AnimatePresence mode="wait">
           {title ? (
             <button
@@ -64,11 +71,11 @@ export default function ShowcaseControls() {
                   duration: 0.2,
                   // ease: 'easeOut',
                 }}
-                className="h-full grid items-center text-medium font-bold text-white"
+                className="h-full grid items-center text-medium font-normal text-black"
               >
                 {title}
               </motion.h1>
-              {title !== PAGE_TITLE && <Close className="h-5 w-5 text-white" />}
+              {title !== PAGE_TITLE && <Close className="h-5 w-5 text-black" />}
             </button>
           ) : (
             <motion.span
@@ -90,10 +97,10 @@ export default function ShowcaseControls() {
                   exit={{ y: '100%' }}
                   transition={{ delay: key * 0.05 }}
                   className={clsx(
-                    'grid content-center w-5 h-5 shadow rounded-full',
+                    'grid content-center w-5 h-5 shadow rounded-full backdrop-blur-xl',
                     {
-                      'bg-white': layout === availableLayout,
-                      'bg-darkgray/50': layout !== availableLayout,
+                      'bg-black': layout === availableLayout,
+                      'bg-gray/50': layout !== availableLayout,
                     }
                   )}
                   onClick={() => {

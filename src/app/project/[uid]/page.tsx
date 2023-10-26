@@ -1,5 +1,4 @@
 import AnimatedPageWrap from '@/components/AnimatedPageWrap/AnimatedPageWrap'
-import Footer from '@/components/Footer/Footer'
 import ProjectNavigation from '@/components/ProjectNavigation/ProjectNavigation'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
@@ -40,13 +39,10 @@ export default async function ProjectPage({
 }) {
   const client = createClient({ fetchOptions: { next: { revalidate: 5 } } })
 
-  const [projectDocument, footerDocument, homepageDocument] = await Promise.all(
-    [
-      client.getByUID('project', params.uid),
-      client.getSingle('footer'),
-      await client.getSingle('homepage'),
-    ]
-  )
+  const [projectDocument, homepageDocument] = await Promise.all([
+    client.getByUID('project', params.uid),
+    await client.getSingle('homepage'),
+  ])
 
   // the project pagination order is in the same order
   // as the documents in ProjectShowCaseSlice on the homepage.
@@ -58,6 +54,12 @@ export default async function ProjectPage({
     (item) => item.showcase.uid
   ) as string[]
 
+  // project documents in the homepage slice
+  const paginationDocuments = await client.getAllByUIDs(
+    'project',
+    paginationUids
+  )
+
   return (
     <main>
       <div className="relative z-20 block bg-white pt-12 pb-24">
@@ -68,7 +70,7 @@ export default async function ProjectPage({
           />
           <ProjectNavigation
             currentUid={projectDocument.uid}
-            uids={paginationUids}
+            documents={paginationDocuments}
           />
         </AnimatedPageWrap>
       </div>
