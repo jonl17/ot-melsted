@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import { ReactElement, ReactHTML, createElement } from 'react'
+import { ReactHTML, createElement } from 'react'
 
-type ElementType = 'large' | 'medium' | 'nav'
+type ElementType = 'large' | 'medium' | 'nav' | 'small'
 
 type ElementProps = {
   children: React.ReactNode
@@ -19,11 +19,25 @@ type TypeProps = {
   className?: string
 }
 
+function Small({ children, className, element }: TypeProps) {
+  return (
+    <Element
+      element={element}
+      className={clsx('font-normal text-small font-untitled', className)}
+    >
+      {children}
+    </Element>
+  )
+}
+
 function Medium({ children, className, element }: TypeProps) {
   return (
     <Element
       element={element}
-      className={clsx('font-normal text-small lg:text-medium', className)}
+      className={clsx(
+        'font-normal text-small lg:text-medium font-untitled',
+        className
+      )}
     >
       {children}
     </Element>
@@ -34,7 +48,10 @@ function Large({ children, element, className }: TypeProps) {
   return (
     <Element
       element={element}
-      className={clsx('font-normal text-medium lg:text-large', className)}
+      className={clsx(
+        'font-normal text-medium lg:text-large font-untitledMedium',
+        className
+      )}
     >
       {children}
     </Element>
@@ -44,7 +61,10 @@ function Large({ children, element, className }: TypeProps) {
 function Nav({ children, element, className }: TypeProps) {
   return (
     <Element
-      className={clsx('font-normal text-medium lg:text-largeMobile', className)}
+      className={clsx(
+        'font-normal text-medium lg:text-largeMobile font-untitledMedium',
+        className
+      )}
       element={element}
     >
       {children}
@@ -77,6 +97,12 @@ export default function Typography({
         <Nav element={element} className={className}>
           {children}
         </Nav>
+      )
+    case 'small':
+      return (
+        <Small element={element} className={className}>
+          {children}
+        </Small>
       )
     default:
       return (

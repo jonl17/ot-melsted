@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     fontFamily: {
       untitled: ['var(--font-untitled)'],
+      untitledMedium: ['var(--font-medium)'],
     },
     fontSize: {
       large: ['36px', '45px'],

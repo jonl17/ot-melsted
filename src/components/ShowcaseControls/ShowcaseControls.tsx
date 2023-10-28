@@ -27,7 +27,7 @@ export default function ShowcaseControls() {
 
   const pathname = usePathname()
 
-  const { back } = useRouter()
+  const { back, push } = useRouter()
 
   useEffect(() => {
     function callback() {
@@ -45,6 +45,14 @@ export default function ShowcaseControls() {
     return () => document.removeEventListener('scroll', callback)
   }, [setTitle, pathname])
 
+  function goBack() {
+    if (document.referrer.includes(window.location.host)) {
+      back()
+    } else {
+      push('/')
+    }
+  }
+
   return (
     <div className="fixed z-40 grid justify-center w-full top-12">
       <motion.nav
@@ -58,8 +66,8 @@ export default function ShowcaseControls() {
         <AnimatePresence mode="wait">
           {title ? (
             <button
-              onClick={() => back()}
-              className="flex place-items-center gap-3 h-full"
+              onClick={() => goBack()}
+              className="flex place-items-center gap-1 h-full"
             >
               <motion.h1
                 key={title}
@@ -71,11 +79,11 @@ export default function ShowcaseControls() {
                   duration: 0.2,
                   // ease: 'easeOut',
                 }}
-                className="h-full grid items-center text-medium font-normal text-black"
+                className="h-full grid items-center text-largeMobile font-untitled font-normal text-black"
               >
                 {title}
               </motion.h1>
-              {title !== PAGE_TITLE && <Close className="h-5 w-5 text-black" />}
+              {title !== PAGE_TITLE && <Close className="h-3 w-3 text-black" />}
             </button>
           ) : (
             <motion.span

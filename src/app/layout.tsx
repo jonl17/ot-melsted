@@ -5,8 +5,6 @@ import { Inter } from 'next/font/google'
 import ShowcaseControls from '@/components/ShowcaseControls/ShowcaseControls'
 import GreetScreen from '@/components/GreetScreen/GreetScreen'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient({ fetchOptions: { next: { revalidate: 5 } } })
   const globalSettings = await client.getSingle('page_settings')
@@ -29,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="relative">
           {children}
           <ShowcaseControls />

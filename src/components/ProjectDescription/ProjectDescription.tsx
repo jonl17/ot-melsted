@@ -13,7 +13,9 @@ export default function ProjectDescription({ text }: Props) {
         field={text}
         components={{
           paragraph: ({ children }) => (
-            <Typography className="mb-5">{children}</Typography>
+            <Typography type="large" className="mb-5">
+              {children}
+            </Typography>
           ),
         }}
       />
