@@ -8,11 +8,11 @@ import { PAGE_TITLE } from '@/constants'
 export default function GreetScreen() {
   const [display, setDisplay] = useState(true)
 
-  const { setTitle } = useControlsStore()
+  const updateControls = useControlsStore((state) => state.updateControls)
 
   useEffect(() => {
-    setTitle(PAGE_TITLE)
-  }, [setTitle])
+    updateControls('logo')
+  }, [updateControls])
 
   useEffect(() => {
     setTimeout(() => {

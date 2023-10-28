@@ -13,7 +13,7 @@ type Props = {
 export default function ListAndImages({ projectDocuments }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | undefined>()
 
-  const setTitle = useControlsStore((state) => state.setTitle)
+  const updateControls = useControlsStore((state) => state.updateControls)
 
   return (
     <div className="flex w-full container">
@@ -23,12 +23,11 @@ export default function ListAndImages({ projectDocuments }: Props) {
             href={`/project/${item.uid}`}
             key={index}
             onMouseEnter={() => {
-              setTitle(item.data.title as string)
+              updateControls('text', item.data.title as string)
               setActiveIndex(index)
             }}
             onMouseLeave={() => {
-              setTitle(undefined)
-
+              updateControls('dots')
               setActiveIndex(undefined)
             }}
             className="inline-block w-auto"

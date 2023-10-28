@@ -1,11 +1,21 @@
 import { create } from 'zustand'
 
+type State = 'logo' | 'dots' | 'text'
+
 type ControlsStore = {
   title?: string
-  setTitle: (title?: string) => void
+  state: State
+  updateControls: (state: State, text?: string) => void
 }
 
 export const useControlsStore = create<ControlsStore>((set) => ({
   title: 'OT.Melsted',
-  setTitle: (title) => set({ title }),
+  state: 'dots',
+  updateControls: (state, text) => {
+    if (text) {
+      set({ state: 'text', title: text })
+    } else {
+      set({ state, title: undefined })
+    }
+  },
 }))

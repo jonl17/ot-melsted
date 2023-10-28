@@ -9,11 +9,11 @@ type Props = {
 }
 
 export default function AnimatedPageWrap({ children, title }: Props) {
-  const { setTitle } = useControlsStore()
+  const updateControls = useControlsStore((state) => state.updateControls)
 
   useEffect(() => {
-    setTitle(title)
-  }, [setTitle, title])
+    updateControls('text', title)
+  }, [title, updateControls])
 
   return (
     <motion.div

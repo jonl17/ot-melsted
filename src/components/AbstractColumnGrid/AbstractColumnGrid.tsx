@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function AbstractColumnGrid({ projectDocuments }: Props) {
-  const setTitle = useControlsStore((state) => state.setTitle)
+  const updateControls = useControlsStore((state) => state.updateControls)
 
   return (
     <div className="grid grid-cols-3 lg:grid-cols-5 gap-5">
@@ -23,8 +23,12 @@ export default function AbstractColumnGrid({ projectDocuments }: Props) {
             className="inline-block"
             href={`/project/${item.uid}`}
             key={key}
-            onMouseMove={() => setTitle(item.data.title as string)}
-            onMouseLeave={() => setTitle(undefined)}
+            onMouseMove={() => {
+              updateControls('text', item.data.title as string)
+            }}
+            onMouseLeave={() => {
+              updateControls('dots')
+            }}
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.98, y: 10 }}

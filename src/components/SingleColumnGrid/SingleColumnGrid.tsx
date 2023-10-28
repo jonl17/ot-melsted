@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function SingleColumnGrid({ projectDocuments }: Props) {
-  const setTitle = useControlsStore((state) => state.setTitle)
+  const updateControls = useControlsStore((state) => state.updateControls)
 
   return (
     <motion.div
@@ -21,8 +21,12 @@ export default function SingleColumnGrid({ projectDocuments }: Props) {
         <Link
           href={`/project/${item.uid}`}
           key={key}
-          onMouseMove={() => setTitle(item.data.title as string)}
-          onMouseLeave={() => setTitle(undefined)}
+          onMouseMove={() => {
+            updateControls('text', item.data.title as string)
+          }}
+          onMouseLeave={() => {
+            updateControls('dots')
+          }}
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.98 }}
