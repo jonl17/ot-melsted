@@ -27,6 +27,7 @@ export default function GreetScreen() {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
           className="fixed top-0 left-0 h-screen w-full bg-white z-50 grid place-content-center"
         >
           <Title className="w-full px-4" />
