@@ -22,6 +22,7 @@ const ProjectImageSectionSlice = ({
       <ProjectImageSection
         firstImage={slice.primary.first_image}
         secondImage={slice.primary.second_image}
+        container={!slice.primary.remove_container}
       />
     </section>
   )

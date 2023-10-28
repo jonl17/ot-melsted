@@ -53,6 +53,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "whenever",
 				"type": "Text"
+			},
+			"remove_container": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": []

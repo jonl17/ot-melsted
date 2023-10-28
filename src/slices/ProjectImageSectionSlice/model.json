@@ -34,6 +34,15 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "remove_container": {
+          "type": "Boolean",
+          "config": {
+            "label": "remove container",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
         }
       },
       "items": {}

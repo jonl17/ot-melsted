@@ -5,18 +5,20 @@ import Image from 'next/image'
 type Props = {
   firstImage?: ImageField
   secondImage?: ImageField
+  container: boolean
 }
 
 export default function ProjectImageSection({
   firstImage,
   secondImage,
+  container,
 }: Props) {
   if (!firstImage) return null
 
   const hasSecondImage = !!secondImage?.url
 
   return (
-    <div className="container max-w-4xl">
+    <div className={clsx(container && 'container max-w-4xl')}>
       <div
         className={clsx('relative h-full w-full', {
           'grid grid-cols-2 gap-5 md:gap-10': hasSecondImage,

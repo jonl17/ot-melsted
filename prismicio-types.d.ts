@@ -441,6 +441,17 @@ export interface ProjectImageSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   second_image: prismic.ImageField<never>
+
+  /**
+   * remove container field in *ProjectImageSectionSlice → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project_image_section.primary.remove_container
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  remove_container: prismic.BooleanField
 }
 
 /**
