@@ -19,12 +19,6 @@ function ContentBox({
   return (
     <div className="flex justify-between h-full">
       <div className="lg:pr-24 lg:w-2/3">
-        <Typography
-          type="large"
-          className="mb-12 lg:mb-0 text-center lg:text-left"
-        >
-          OT.melsted
-        </Typography>
         <div className="flex lg:hidden items-start justify-end py-0 w-full lg:mb-0">
           <Image
             height={image.dimensions?.height}
@@ -34,7 +28,7 @@ function ContentBox({
             className="object-contain w-full"
           />
         </div>
-        <div className="pt-12">
+        <div>
           <PrismicRichText
             field={about}
             components={{

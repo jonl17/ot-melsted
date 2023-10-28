@@ -30,7 +30,7 @@ export default function GreetScreen() {
           transition={{ duration: 1 }}
           className="fixed top-0 left-0 h-screen w-full bg-white z-50 grid place-content-center"
         >
-          <Title className="w-full px-4" />
+          <Title className="w-full h-96 px-12 lg:px-56" />
         </motion.div>
       ) : null}
     </AnimatePresence>

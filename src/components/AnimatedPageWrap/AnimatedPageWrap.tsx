@@ -12,7 +12,7 @@ export default function AnimatedPageWrap({ children, title }: Props) {
   const updateControls = useControlsStore((state) => state.updateControls)
 
   useEffect(() => {
-    updateControls('text', title)
+    updateControls('text', title, true)
   }, [title, updateControls])
 
   return (

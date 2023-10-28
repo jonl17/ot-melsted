@@ -18,7 +18,7 @@ const layoutOptions: ShowcaseLayoutType[] = [
 ]
 
 const StateRender = () => {
-  const { state, title } = useControlsStore()
+  const { state, title, closeIcon } = useControlsStore()
   const { layout, setLayout } = useShowcaseLayoutStore()
   function layoutChangeCallback() {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
@@ -68,7 +68,17 @@ const StateRender = () => {
           <motion.h1 className="h-full grid items-center mb-1 text-largeMobile font-untitledMedium font-normal text-black">
             {title}
           </motion.h1>
-          {<Close className="h-3 w-3 text-black" />}
+          {closeIcon && (
+            <motion.span
+              key={JSON.stringify(closeIcon)}
+              initial={{ x: -10 }}
+              animate={{ x: 0 }}
+              exit={{ x: -10 }}
+              transition={{ bounce: false, duration: 0.1 }}
+            >
+              <Close className="h-3 w-3 text-black" />
+            </motion.span>
+          )}
         </motion.button>
       )
     }
@@ -142,7 +152,7 @@ export default function ShowcaseControls() {
   }, [pathname, updateControls])
 
   return (
-    <div className="fixed z-40 grid justify-center w-full top-12">
+    <div className="fixed z-40 grid justify-center w-full top-6">
       <motion.nav
         className={clsx(
           'h-6 flex items-center rounded-full px-2 overflow-hidden transition-all',
