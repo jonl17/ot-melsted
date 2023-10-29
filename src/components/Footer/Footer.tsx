@@ -25,7 +25,7 @@ function ContentBox({
             width={image.dimensions?.width}
             src={image.url ?? ''}
             alt={image.alt ?? ''}
-            className="object-contain w-full"
+            className="object-contain w-full pb-6"
           />
         </div>
         <div>
@@ -45,7 +45,7 @@ function ContentBox({
           <ContactBox title="Address" content={address_box} />
         </div>
       </div>
-      <div className="hidden lg:flex items-start justify-end py-0 w-1/3 lg:mb-0">
+      <div className="hidden lg:flex items-start justify-end w-1/3 lg:mb-0">
         <Image
           height={image.dimensions?.height}
           width={image.dimensions?.width}

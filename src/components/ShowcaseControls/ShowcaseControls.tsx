@@ -43,7 +43,7 @@ const StateRender = () => {
             bounce: false,
             duration: 0.2,
           }}
-          className="relative block h-4"
+          className="relative block h-4 w-28"
         >
           <Link href="/">
             <Title className="h-full" />

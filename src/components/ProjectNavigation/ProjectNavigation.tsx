@@ -22,7 +22,6 @@ export default function ProjectNavigation({ currentUid, documents }: Props) {
           className="underline hover:opacity-60"
           href={`/project/${nextDocument.uid}`}
         >
-          <Arrow />
           <Typography type="large">{nextDocument.data.title}</Typography>
         </Link>
       </motion.span>

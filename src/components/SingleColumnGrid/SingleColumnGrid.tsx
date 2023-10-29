@@ -15,7 +15,7 @@ export default function SingleColumnGrid({ projectDocuments }: Props) {
     <motion.div
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="grid justify-center gap-56"
+      className="grid justify-center gap-24 md:gap-56"
     >
       {projectDocuments.map((item, key) => (
         <Link

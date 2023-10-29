@@ -30,9 +30,9 @@ export default function ProjectShowcase({ projectDocuments }: Props) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full min-h-screen pt-12 bg-white"
+      className="relative w-full md:min-h-screen bg-white container"
     >
-      <section className="px-12 py-36">
+      <section className="py-12 md:py-36">
         <AnimatePresence key={layout}>
           {layout === 'abstract-column' && (
             <AbstractColumnGrid projectDocuments={projectDocuments} />

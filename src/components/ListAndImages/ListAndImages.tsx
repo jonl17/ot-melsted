@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useControlsStore } from '@/stores/controls'
+import Typography from '../Typography'
 
 type Props = {
   projectDocuments: ProjectDocument[]
@@ -39,11 +40,11 @@ export default function ListAndImages({ projectDocuments }: Props) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ delay: index * 0.05 }}
-              className={clsx('text-left w-auto', {
+              className={clsx('text-center md:text-left w-auto', {
                 underline: activeIndex === index,
               })}
             >
-              <p className="text-large font-untitled">{item.data.title}</p>
+              <Typography type="large">{item.data.title}</Typography>
             </motion.span>
           </Link>
         ))}
