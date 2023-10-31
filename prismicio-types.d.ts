@@ -276,6 +276,16 @@ export interface DescriptionSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   text: prismic.RichTextField
+
+  /**
+   * small text field in *DescriptionSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: description_slice.primary.small_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  small_text: prismic.KeyTextField
 }
 
 /**

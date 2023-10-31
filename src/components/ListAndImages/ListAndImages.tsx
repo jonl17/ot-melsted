@@ -17,8 +17,8 @@ export default function ListAndImages({ projectDocuments }: Props) {
   const updateControls = useControlsStore((state) => state.updateControls)
 
   return (
-    <div className="flex w-full container">
-      <div className="inline-flex flex-col content-start w-auto md:w-1/2">
+    <div className="flex w-full container pt-12 pb-36 lg:py-0">
+      <div className="inline-flex flex-col items-center text-center w-full">
         {projectDocuments.map((item, index) => (
           <Link
             href={`/project/${item.uid}`}
@@ -50,7 +50,7 @@ export default function ListAndImages({ projectDocuments }: Props) {
         ))}
       </div>
       {/* images here */}
-      <div className="relative w-full h-[400px] hidden md:block">
+      {/* <div className="relative w-full h-[400px] hidden md:block">
         {projectDocuments.map((item, index) => (
           <AnimatePresence key={index}>
             {activeIndex === index && (
@@ -72,7 +72,7 @@ export default function ListAndImages({ projectDocuments }: Props) {
             )}
           </AnimatePresence>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

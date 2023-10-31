@@ -30,7 +30,7 @@ export default function ProjectShowcase({ projectDocuments }: Props) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full md:min-h-screen bg-white container"
+      className="relative w-full md:min-h-screen pt-24 md:pt-0 bg-white container"
     >
       <section className="py-12 md:py-36">
         <AnimatePresence key={layout}>

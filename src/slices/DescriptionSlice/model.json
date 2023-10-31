@@ -20,6 +20,13 @@
             "allowTargetBlank": false,
             "multi": "paragraph"
           }
+        },
+        "small_text": {
+          "type": "Text",
+          "config": {
+            "label": "small text",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

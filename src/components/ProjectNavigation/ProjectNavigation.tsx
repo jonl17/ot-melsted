@@ -19,9 +19,10 @@ export default function ProjectNavigation({ currentUid, documents }: Props) {
     <nav className="container flex justify-center pt-12 lg:py-24">
       <motion.span layoutId={`project-title-${currentUid}`}>
         <Link
-          className="underline hover:opacity-60"
+          className="hover:opacity-60 text-center"
           href={`/project/${nextDocument.uid}`}
         >
+          <Typography>Next project</Typography>
           <Typography type="large">{nextDocument.data.title}</Typography>
         </Link>
       </motion.span>

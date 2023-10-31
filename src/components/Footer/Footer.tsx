@@ -28,7 +28,7 @@ function ContentBox({
             className="object-contain w-full pb-6"
           />
         </div>
-        <div>
+        <div className="mb-20">
           <PrismicRichText
             field={about}
             components={{
@@ -69,7 +69,9 @@ function ContactBox({ title, content }: ContactBoxProps) {
       <PrismicRichText
         field={content}
         components={{
-          paragraph: ({ children }) => <Typography>{children}</Typography>,
+          paragraph: ({ children }) => (
+            <Typography className="mb-1">{children}</Typography>
+          ),
         }}
       />
     </div>

@@ -30,12 +30,16 @@
           "label": "Address box",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "paragraph,hyperlink"
+          "multi": "paragraph,hyperlink"
         }
       },
       "image": {
         "type": "Image",
-        "config": { "label": "image", "constraint": {}, "thumbnails": [] }
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }

@@ -13,6 +13,11 @@
 						}
 					}
 				]
+			},
+			"small_text": {
+				"__TYPE__": "FieldContent",
+				"value": "distance",
+				"type": "Text"
 			}
 		},
 		"items": []

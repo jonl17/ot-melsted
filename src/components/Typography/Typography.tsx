@@ -35,7 +35,7 @@ function Medium({ children, className, element }: TypeProps) {
     <Element
       element={element}
       className={clsx(
-        'font-normal text-small lg:text-medium font-untitled',
+        'font-normal text-small lg:text-largeMobile font-untitled',
         className
       )}
     >

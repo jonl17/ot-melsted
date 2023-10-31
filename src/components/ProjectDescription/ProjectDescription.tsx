@@ -4,9 +4,10 @@ import Typography from '../Typography/Typography'
 
 type Props = {
   text: RichTextField
+  smallText: string
 }
 
-export default function ProjectDescription({ text }: Props) {
+export default function ProjectDescription({ text, smallText }: Props) {
   return (
     <div className="container max-w-4xl text-center md:py-44">
       <PrismicRichText
@@ -19,6 +20,7 @@ export default function ProjectDescription({ text }: Props) {
           ),
         }}
       />
+      <Typography>{smallText}</Typography>
     </div>
   )
 }

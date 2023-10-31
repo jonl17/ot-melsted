@@ -17,7 +17,10 @@ const DescriptionSlice = ({ slice }: DescriptionSliceProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <ProjectDescription text={slice.primary.text} />
+      <ProjectDescription
+        text={slice.primary.text}
+        smallText={slice.primary.small_text ?? ''}
+      />
     </section>
   )
 }
