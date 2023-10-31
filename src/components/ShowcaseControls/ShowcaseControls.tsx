@@ -63,7 +63,7 @@ const StateRender = () => {
             duration: 0.2,
           }}
           onClick={() => goBack()}
-          className="flex items-center gap-1 h-full"
+          className="flex items-center gap-1 h-full pt-1"
         >
           <motion.h1 className="h-full grid items-center mb-1 text-largeMobile font-untitledMedium font-normal text-black">
             {title}
@@ -76,7 +76,7 @@ const StateRender = () => {
               exit={{ x: -10 }}
               transition={{ bounce: false, duration: 0.1 }}
             >
-              <Close className="h-3 w-3 text-black" />
+              <Close className="h-4 w-4 pb-1 text-black" />
             </motion.span>
           )}
         </motion.button>
@@ -155,7 +155,7 @@ export default function ShowcaseControls() {
     <div className="fixed z-40 grid justify-center w-full top-6">
       <motion.nav
         className={clsx(
-          'h-6 flex items-center rounded-full px-2 overflow-hidden transition-all',
+          'h-8 flex items-center rounded-full px-3 overflow-hidden transition-all',
           {
             'bg-gray/50': state !== 'dots',
           }
