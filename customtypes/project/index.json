@@ -32,6 +32,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_video_section_slice": {
+              "type": "SharedSlice"
+            },
             "project_banner": {
               "type": "SharedSlice"
             },

@@ -171,6 +171,7 @@ export type PageSettingsDocument<Lang extends string = string> =
   >
 
 type ProjectDocumentDataSlicesSlice =
+  | ProjectVideoSectionSliceSlice
   | ProjectBannerSlice
   | DescriptionSliceSlice
   | ProjectImageSectionSlice
@@ -539,6 +540,63 @@ export type ProjectShowcaseSliceSlice = prismic.SharedSlice<
   ProjectShowcaseSliceSliceVariation
 >
 
+/**
+ * Primary content in *ProjectVideoSectionSlice → Primary*
+ */
+export interface ProjectVideoSectionSliceSliceDefaultPrimary {
+  /**
+   * video field in *ProjectVideoSectionSlice → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_video_section_slice.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField
+
+  /**
+   * remove container field in *ProjectVideoSectionSlice → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project_video_section_slice.primary.remove_container
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  remove_container: prismic.BooleanField
+}
+
+/**
+ * Default variation for ProjectVideoSectionSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectVideoSectionSliceSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ProjectVideoSectionSliceSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *ProjectVideoSectionSlice*
+ */
+type ProjectVideoSectionSliceSliceVariation =
+  ProjectVideoSectionSliceSliceDefault
+
+/**
+ * ProjectVideoSectionSlice Shared Slice
+ *
+ * - **API ID**: `project_video_section_slice`
+ * - **Description**: ProjectVideoSectionSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectVideoSectionSliceSlice = prismic.SharedSlice<
+  'project_video_section_slice',
+  ProjectVideoSectionSliceSliceVariation
+>
+
 declare module '@prismicio/client' {
   interface CreateClient {
     (
@@ -580,6 +638,10 @@ declare module '@prismicio/client' {
       ProjectShowcaseSliceSliceDefaultItem,
       ProjectShowcaseSliceSliceVariation,
       ProjectShowcaseSliceSliceDefault,
+      ProjectVideoSectionSliceSlice,
+      ProjectVideoSectionSliceSliceDefaultPrimary,
+      ProjectVideoSectionSliceSliceVariation,
+      ProjectVideoSectionSliceSliceDefault,
     }
   }
 }

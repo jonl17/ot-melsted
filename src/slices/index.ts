@@ -8,4 +8,7 @@ export const components = {
   project_banner: dynamic(() => import('./ProjectBannerSlice')),
   project_image_section: dynamic(() => import('./ProjectImageSectionSlice')),
   project_showcase_slice: dynamic(() => import('./ProjectShowcaseSlice')),
+  project_video_section_slice: dynamic(
+    () => import('./ProjectVideoSectionSlice')
+  ),
 }
