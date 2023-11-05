@@ -49,10 +49,12 @@ export default async function ProjectPage({
   const homepageProjectSliceDoc = homepageDocument.data.slices.find(
     (slice) => slice.slice_type === 'project_showcase_slice'
   )
-  const paginationUids = homepageProjectSliceDoc?.items.map(
-    // @ts-ignore
-    (item) => item.showcase.uid
-  ) as string[]
+  const paginationUids = homepageProjectSliceDoc?.items
+    .filter((item) => item.showcase)
+    .map(
+      // @ts-ignore
+      (item) => item.showcase.uid
+    ) as string[]
 
   // project documents in the homepage slice
   const paginationDocuments = await client.getAllByUIDs(
