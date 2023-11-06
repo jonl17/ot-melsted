@@ -14,11 +14,11 @@ export default function GreetScreen() {
     updateControls('logo')
   }, [updateControls])
 
-  useEffect(() => {
-    setTimeout(() => {
-      setDisplay(false)
-    }, 1000)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setDisplay(false)
+  //   }, 1000)
+  // }, [])
 
   return (
     <AnimatePresence>
