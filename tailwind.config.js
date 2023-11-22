@@ -19,7 +19,7 @@ module.exports = {
       lightgray: '#F2F3F3',
       darkgray: '#BDBDBD',
       white: '#FFFFFF',
-      black: '#000000',
+      black: 'rgba(0, 0, 0, 0.9)',
     },
     container: {
       center: true,
