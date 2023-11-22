@@ -19,7 +19,7 @@ function ContentBox({
   return (
     <div className="flex justify-between h-full">
       <div className="lg:pr-24 lg:w-2/3">
-        <div className="flex lg:hidden items-start justify-end py-0 w-full lg:mb-0">
+        <div className="flex items-start justify-end w-full py-0 lg:hidden lg:mb-0">
           <Image
             height={image.dimensions?.height}
             width={image.dimensions?.width}
@@ -45,7 +45,7 @@ function ContentBox({
           <ContactBox title="Address" content={address_box} />
         </div>
       </div>
-      <div className="hidden lg:flex items-start justify-end w-1/3 lg:mb-0">
+      <div className="items-start justify-end hidden w-1/3 lg:flex lg:mb-0">
         <Image
           height={image.dimensions?.height}
           width={image.dimensions?.width}
@@ -70,7 +70,7 @@ function ContactBox({ title, content }: ContactBoxProps) {
         field={content}
         components={{
           paragraph: ({ children }) => (
-            <Typography className="mb-1">{children}</Typography>
+            <Typography className="mb-0">{children}</Typography>
           ),
         }}
       />
@@ -85,8 +85,8 @@ export default function Footer({
   image,
 }: FooterDocument['data']) {
   return (
-    <footer className="inset-x-0 h-full min-h-screen overflow-y-scroll lg:fixed bg-lightgray pb-safe top-0">
-      <div className="container grid content-between h-full gap-12 py-12 lg:py-36 mx-auto lg:gap-0">
+    <footer className="inset-x-0 top-0 h-full min-h-screen overflow-y-scroll lg:fixed bg-lightgray pb-safe">
+      <div className="container grid content-between h-full gap-12 py-12 mx-auto lg:py-36 lg:gap-0">
         <ContentBox
           about={about}
           image={image}

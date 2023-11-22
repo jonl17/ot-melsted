@@ -3,10 +3,15 @@ import { create } from 'zustand'
 
 type ShowcaseLayoutStore = {
   layout: ShowcaseLayoutType
-  setLayout: (layout: ShowcaseLayoutType) => void
+  setLayout: (layout: ShowcaseLayoutType, callback?: () => void) => void
 }
 
 export const useShowcaseLayoutStore = create<ShowcaseLayoutStore>((set) => ({
   layout: 'single-column',
-  setLayout: (layout) => set({ layout }),
+  setLayout: (layout, callback) => {
+    if (callback) {
+      callback()
+    }
+    return set({ layout })
+  },
 }))

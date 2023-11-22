@@ -27,10 +27,14 @@ export default function ProjectShowcase({ projectDocuments }: Props) {
     }
   }
 
+  useEffect(() => {
+    scrollTop()
+  }, [layout])
+
   return (
     <div
       ref={containerRef}
-      className="relative w-full md:min-h-screen pt-24 md:pt-0 bg-white container"
+      className="container relative w-full pt-24 bg-white md:min-h-screen md:pt-0"
     >
       <section className="py-12 md:py-36">
         <AnimatePresence key={layout}>

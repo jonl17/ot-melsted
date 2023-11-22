@@ -20,9 +20,7 @@ const layoutOptions: ShowcaseLayoutType[] = [
 const StateRender = () => {
   const { state, title, closeIcon } = useControlsStore()
   const { layout, setLayout } = useShowcaseLayoutStore()
-  function layoutChangeCallback() {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
-  }
+
   const { back, push } = useRouter()
   function goBack() {
     if (document.referrer.includes(window.location.host)) {
@@ -63,9 +61,9 @@ const StateRender = () => {
             duration: 0.2,
           }}
           onClick={() => goBack()}
-          className="flex items-center gap-1 h-full pt-1"
+          className="flex items-center h-full gap-1 pt-1"
         >
-          <motion.h1 className="h-full grid items-center mb-1 text-largeMobile font-untitledMedium font-normal text-black">
+          <motion.h1 className="grid items-center h-full mb-1 font-normal text-black text-largeMobile font-untitledMedium">
             {title}
           </motion.h1>
           {closeIcon && (
@@ -76,7 +74,7 @@ const StateRender = () => {
               exit={{ x: -10 }}
               transition={{ bounce: false, duration: 0.1 }}
             >
-              <Close className="h-4 w-4 pb-1 text-black" />
+              <Close className="w-4 h-4 pb-1 text-black" />
             </motion.span>
           )}
         </motion.button>
@@ -94,7 +92,7 @@ const StateRender = () => {
             duration: 0.2,
             ease: 'anticipate',
           }}
-          className="flex gap-3 items-center h-full"
+          className="flex items-center h-full gap-3"
         >
           {layoutOptions.map((availableLayout, key) => (
             <motion.button
@@ -111,7 +109,7 @@ const StateRender = () => {
               )}
               onClick={() => {
                 setLayout(availableLayout)
-                layoutChangeCallback()
+                // layoutChangeCallback()
               }}
               key={key}
             />
