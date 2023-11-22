@@ -20,8 +20,8 @@ export default function ProjectImageSection({
   return (
     <div className={clsx(container && 'container max-w-4xl')}>
       <div
-        className={clsx('relative h-full w-full', {
-          'grid grid-cols-2 gap-5 md:gap-10': hasSecondImage,
+        className={clsx('relative h-full w-full grid place-content-center', {
+          'grid-cols-2 gap-5 md:gap-10': hasSecondImage,
         })}
       >
         <Image
