@@ -64,7 +64,7 @@ export default async function ProjectPage({
 
   return (
     <main>
-      <div className="relative z-20 block bg-white pt-12 pb-24">
+      <div className="relative z-20 block pb-24 bg-white">
         <AnimatedPageWrap title={projectDocument.data.title ?? ''}>
           <SliceZone
             slices={projectDocument.data.slices}

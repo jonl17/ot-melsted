@@ -9,7 +9,7 @@ type Props = {
 
 export default function ProjectDescription({ text, smallText }: Props) {
   return (
-    <div className="container max-w-4xl text-center md:py-44">
+    <div className="container max-w-6xl text-center md:py-44">
       <PrismicRichText
         field={text}
         components={{
