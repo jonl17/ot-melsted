@@ -1,15 +1,15 @@
 'use client'
-import { PAGE_TITLE } from '@/constants'
+import Typography from '@/components/Typography'
 import Close from '@/icons/Close'
+import Title from '@/icons/Title'
 import { useControlsStore } from '@/stores/controls'
 import { useShowcaseLayoutStore } from '@/stores/showcaseLayout'
 import { ShowcaseLayoutType } from '@/types'
 import clsx from 'clsx'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import Title from '@/icons/Title'
 
 const layoutOptions: ShowcaseLayoutType[] = [
   'single-column',
@@ -63,9 +63,9 @@ const StateRender = () => {
             duration: 0.2,
           }}
           onClick={() => goBack()}
-          className="flex items-center gap-1 h-full pt-1"
+          className="flex items-center h-full gap-1 pt-1"
         >
-          <motion.h1 className="h-full grid items-center mb-1 text-largeMobile font-untitledMedium font-normal text-black">
+          <motion.h1 className="grid items-center h-full mb-1 font-normal text-black text-largeMobile font-untitledMedium">
             {title}
           </motion.h1>
           {closeIcon && (
@@ -76,7 +76,7 @@ const StateRender = () => {
               exit={{ x: -10 }}
               transition={{ bounce: false, duration: 0.1 }}
             >
-              <Close className="h-4 w-4 pb-1 text-black" />
+              <Close className="w-4 h-4 pb-1 text-black" />
             </motion.span>
           )}
         </motion.button>
@@ -94,7 +94,7 @@ const StateRender = () => {
             duration: 0.2,
             ease: 'anticipate',
           }}
-          className="flex gap-3 items-center h-full"
+          className="flex items-center h-full gap-3"
         >
           {layoutOptions.map((availableLayout, key) => (
             <motion.button
@@ -119,6 +119,25 @@ const StateRender = () => {
         </motion.span>
       )
     }
+    case 'wip': {
+      return (
+        <motion.span
+          key={state}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 10, opacity: 0 }}
+          transition={{
+            bounce: false,
+            duration: 0.2,
+          }}
+          className="relative block w-full"
+        >
+          <Typography className="font-medium" type="nav">
+            New website opening 2024
+          </Typography>
+        </motion.span>
+      )
+    }
     default:
       return null
   }
@@ -129,30 +148,30 @@ export default function ShowcaseControls() {
 
   const pathname = usePathname()
 
-  useEffect(() => {
-    function callback() {
-      // only applies to the homepage
-      if (pathname === '/') {
-        if (window.scrollY < window.innerHeight * 0.65) {
-          updateControls('logo')
-        } else {
-          updateControls('dots')
-        }
-      }
-    }
+  // useEffect(() => {
+  //   function callback() {
+  //     // only applies to the homepage
+  //     if (pathname === '/') {
+  //       if (window.scrollY < window.innerHeight * 0.65) {
+  //         updateControls('logo')
+  //       } else {
+  //         updateControls('dots')
+  //       }
+  //     }
+  //   }
 
-    document.addEventListener('scroll', callback)
-    return () => document.removeEventListener('scroll', callback)
-  }, [pathname, updateControls])
+  //   document.addEventListener('scroll', callback)
+  //   return () => document.removeEventListener('scroll', callback)
+  // }, [pathname, updateControls])
 
-  useEffect(() => {
-    if (pathname === '/') {
-      updateControls('logo')
-    }
-  }, [pathname, updateControls])
+  // useEffect(() => {
+  //   if (pathname === '/') {
+  //     updateControls('logo')
+  //   }
+  // }, [pathname, updateControls])
 
   return (
-    <div className="fixed z-40 grid justify-center w-full top-6">
+    <div className="fixed z-[999] grid justify-center w-full top-6">
       <motion.nav
         className={clsx(
           'h-8 flex items-center rounded-full px-3 overflow-hidden transition-all',

@@ -11,7 +11,7 @@ export default function GreetScreen() {
   const updateControls = useControlsStore((state) => state.updateControls)
 
   useEffect(() => {
-    updateControls('logo')
+    updateControls('wip')
   }, [updateControls])
 
   // useEffect(() => {
@@ -28,9 +28,9 @@ export default function GreetScreen() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="fixed top-0 left-0 h-screen w-full bg-white z-50 grid place-content-center"
+          className="fixed top-0 left-0 z-50 grid w-full h-screen bg-white place-content-center"
         >
-          <Title className="w-full h-96 px-12 lg:px-56" />
+          <Title className="w-full px-12 h-96 lg:px-56" />
         </motion.div>
       ) : null}
     </AnimatePresence>

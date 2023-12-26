@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type State = 'logo' | 'dots' | 'text'
+type State = 'logo' | 'dots' | 'text' | 'wip'
 
 type ControlsStore = {
   state: State
@@ -10,7 +10,7 @@ type ControlsStore = {
 }
 
 export const useControlsStore = create<ControlsStore>((set) => ({
-  state: 'dots',
+  state: 'wip',
   updateControls: (state, text, closeIcon) => {
     if (text) {
       set({ state: 'text', title: text, closeIcon: closeIcon ?? false })
@@ -18,6 +18,6 @@ export const useControlsStore = create<ControlsStore>((set) => ({
       set({ state, title: undefined, closeIcon: false })
     }
   },
-  title: 'OT.Melsted',
+  title: 'New website opening 2024',
   closeIcon: false,
 }))
