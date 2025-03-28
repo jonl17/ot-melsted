@@ -18,6 +18,6 @@ export const useControlsStore = create<ControlsStore>((set) => ({
       set({ state, title: undefined, closeIcon: false })
     }
   },
-  title: 'New website opening 2024',
+  title: `New website opening ${new Date().getFullYear()}`,
   closeIcon: false,
 }))

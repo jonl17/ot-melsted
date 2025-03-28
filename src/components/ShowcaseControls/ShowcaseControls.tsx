@@ -133,7 +133,7 @@ const StateRender = () => {
           className="relative block w-full"
         >
           <Typography className="font-medium" type="nav">
-            New website opening 2024
+            New website opening {new Date().getFullYear()}
           </Typography>
         </motion.span>
       )
